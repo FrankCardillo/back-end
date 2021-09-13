@@ -53,7 +53,9 @@ router.get("/", async (req, res, next) => {
 
 		res.send(responseObj);
 	} catch (e) {
-		res.send(e);
+		/* This would be better off being sent to the client so that the client could display an error message informing
+        the user of what went wrong and that they should try again. However, it makes my life easier in testing locally to leave it like this */
+		throw e;
 	}
 });
 
