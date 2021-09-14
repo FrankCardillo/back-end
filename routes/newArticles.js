@@ -4,6 +4,20 @@ const router = express.Router();
 const config = require("../config.json");
 var parser = require("fast-xml-parser");
 
+/* We get a ton of data back from arxiv and I just don't need all of it for my presentation layer.
+So why send it along and force the client to parse it out? Let's keep those views slim! */
+const getUsefulArticleData = (articleJson) => {
+	const outputArr = [];
+	for (let i = 0; i < articleJson.feed.entry.length; i++) {
+		outputArr.push({
+			title: articleJson.feed.entry[i].title,
+			summary: articleJson.feed.entry[i].summary,
+			published: articleJson.feed.entry[i].published,
+		});
+	}
+	return outputArr;
+};
+
 /* GET 20 newest articles containing information relevant to psychiatry, therapy, data science, or machine learning. */
 router.get("/", async (req, res, next) => {
 	try {
@@ -45,10 +59,10 @@ router.get("/", async (req, res, next) => {
 		const dataScienceJson = parser.parse(dataScienceArxivResponse.data);
 
 		const responseObj = {
-			psychiatry: psychiatryJson,
-			therapy: therapyJson,
-			machineLearning: machineLearningJson,
-			dataScience: dataScienceJson,
+			Psychiatry: getUsefulArticleData(psychiatryJson),
+			Therapy: getUsefulArticleData(therapyJson),
+			"Machine Learning": getUsefulArticleData(machineLearningJson),
+			"Data Science": getUsefulArticleData(dataScienceJson),
 		};
 
 		res.send(responseObj);
