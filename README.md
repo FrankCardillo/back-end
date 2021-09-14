@@ -31,3 +31,11 @@
 ### Error handling
 
 - Right now errors are not being sent to the client and the client is not doing anything to alert users of what went wrong and how to rectify the situation. This is obviously quite bad. Users need to know. Further, we could set up logging with alerts to let us know via pager duty or what-have-you when we've made a bad prod release and broken an endpoint (or more).
+
+### HTTPS
+
+- A requisite for any web app in today's world. We definitely need to implement this if we want to be production ready. Goes for the app too, but I'll just note it here.
+
+### Typescript
+
+- I went the easy way and just used js. But I do prefer Typescript and would make the switch (with all the attendant interface defining) in a larger scale project.

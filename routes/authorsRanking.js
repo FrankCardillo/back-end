@@ -41,7 +41,7 @@ const getStats = async (author, data) => {
 	}
 
 	return {
-		author,
+		authorName: author,
 		totalPublications,
 		mostRecentPublication: new Date(mostRecentPublication),
 	};
