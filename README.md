@@ -12,7 +12,7 @@
 
 ## Testing
 
-- There is no testing. This is what I would want to test in an api. fill this out later
+- There is no testing as you can see. While TDD is important, in this case I prioritized delivering an MVP within a time box. For the back end I'd love to help grow a test suite that checks atomic behaviors of the various helper functions in the routes. Validating our confidence in our answers to questions like, "does this function perform the action I expect in a consistent and predictable manner" and "are my use cases for the component covered (including edge cases)?" I would also like to bring it all together and test the actual endpoint handlers that ultimately return the data to the client. In this case, I think it would be prudent to stub out arxiv API responses (including errors) rather than call their API directly in my unit tests.
 
 ## Improvements worth making
 
@@ -39,3 +39,7 @@
 ### Typescript
 
 - I went the easy way and just used js. But I do prefer Typescript and would make the switch (with all the attendant interface defining) in a larger scale project.
+
+### CI/CD
+
+- I don't know to what extent it's even appropriate to talk about devops here, but if this were a production app we'd need a reliable way to deploy it so our users could access it. Maybe a Jenkins build process. Maybe Codeship. In any case, that's a whole other initiative and I didn't think it was within the scope of this project to start building that. I did want to make note of it though.
